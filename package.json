@@ -1,5 +1,5 @@
 {
-  "name": "sanity-template-remix-clean",
+  "name": "portable-text-prensentation-mode-issue",
   "private": true,
   "scripts": {
     "dev": "pnpm -r dev",
