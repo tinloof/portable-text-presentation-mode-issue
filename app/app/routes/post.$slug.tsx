@@ -7,6 +7,8 @@ import { urlFor } from '~/sanity/image'
 import { loadQuery } from '~/sanity/loader.server'
 import { POST_QUERY } from '~/sanity/queries'
 import { Post } from '~/sanity/types'
+import { RichText } from '~/components/RichText'
+import { vercelStegaCleanAll } from '@sanity/client/stega'
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const initial = await loadQuery<Post>(POST_QUERY, params)
@@ -49,7 +51,7 @@ export default function PostRoute() {
         )}
         {data?.body && (
           <div className="post__content">
-            <PortableText value={data.body} />
+            <RichText value={data.body} />
           </div>
         )}
       </div>
