@@ -72,11 +72,5 @@ export function RichText({
     },
   }
 
-  return (
-    <PortableText
-      value={value}
-
-      // components={components}
-    />
-  )
+  return <PortableText value={value} components={components} />
 }
