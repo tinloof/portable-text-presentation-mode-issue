@@ -4,6 +4,7 @@ import {deskTool} from 'sanity/desk'
 import {schemaTypes} from './schemas'
 import {presentationTool, DocumentLocationResolver} from 'sanity/presentation'
 import {Observable, map} from 'rxjs'
+import {codeInput} from '@sanity/code-input'
 
 export const projectId = process.env.SANITY_STUDIO_PROJECT_ID!
 export const dataset = process.env.SANITY_STUDIO_DATASET!
@@ -50,6 +51,7 @@ export default defineConfig({
   dataset,
   plugins: [
     deskTool(),
+    codeInput(),
     presentationTool({
       previewUrl: process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000',
       locate,

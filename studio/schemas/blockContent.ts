@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -38,6 +38,7 @@ export default defineType({
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
+          {title: 'Code', value: 'code'},
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
@@ -55,6 +56,22 @@ export default defineType({
           },
         ],
       },
+    }),
+    defineArrayMember({
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineArrayMember({
+      type: 'object',
+      name: 'codeSnippet',
+      fields: [
+        defineField({
+          name: 'code',
+          type: 'code',
+        }),
+      ],
     }),
   ],
 })

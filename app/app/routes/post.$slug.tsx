@@ -1,9 +1,3 @@
-import {
-  PortableText,
-  PortableTextBlock,
-  PortableTextComponents,
-  PortableTextProps,
-} from '@portabletext/react'
 import { type LoaderFunctionArgs } from '@remix-run/node'
 import { useLoaderData } from '@remix-run/react'
 import { useQuery } from '@sanity/react-loader'
@@ -12,7 +6,7 @@ import { urlFor } from '~/sanity/image'
 import { loadQuery } from '~/sanity/loader.server'
 import { POST_QUERY } from '~/sanity/queries'
 import { Post } from '~/sanity/types'
-import { ArbitraryTypedObject } from '@portabletext/types'
+import { RichText } from '../components/RichText'
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const initial = await loadQuery<Post>(POST_QUERY, params)
@@ -61,16 +55,4 @@ export default function PostRoute() {
       </div>
     </section>
   )
-}
-
-export function RichText({
-  value = [],
-}: PortableTextProps<PortableTextBlock | ArbitraryTypedObject>) {
-  const components: PortableTextComponents = {
-    types: {
-      codeSnippet: ({ value }) => <div>Foo bar</div>,
-    },
-  }
-
-  return <PortableText value={value} components={components} />
 }
